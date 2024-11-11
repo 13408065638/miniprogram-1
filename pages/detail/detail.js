@@ -35,9 +35,9 @@ Page({
         price: 1299,
         description: '采用优质铝合金材质，轻量化设计，提升操控性能',
         images: [
-          '/assets/images/wheel1.jpg',
-          '/assets/images/wheel2.jpg',
-          '/assets/images/wheel3.jpg'
+          '/tried.jpg',
+          '/tried.jpg',
+          '/tried.jpg'
         ],
         specifications: [
           { name: '尺寸', value: '18寸' },
@@ -164,19 +164,19 @@ Page({
         {
           id: 1,
           nickname: '用户123',
-          avatar: '/assets/images/avatar.png',
+          avatar: '/tried.jpg',
           rating: 5,
           content: '轮毂质量非常好，安装后效果很棒，店家服务也很周到。',
           images: [
-            '/assets/images/review1.jpg',
-            '/assets/images/review2.jpg'
+            '/tried.jpg',
+            '/tried.jpg'
           ],
           time: '2024-01-15'
         },
         {
           id: 2,
           nickname: '张先生',
-          avatar: '/assets/images/avatar.png',
+          avatar: '/tried.jpg',
           rating: 4,
           content: '整体不错，就是发货稍微有点慢。',
           images: [],

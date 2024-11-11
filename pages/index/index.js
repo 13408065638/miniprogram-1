@@ -14,12 +14,11 @@ Page({
 
   // 获取轮播图数据
   fetchBanners: function() {
-    // 模拟数据，实际开发需要对接后端API
     this.setData({
       banners: [
-        { id: 1, imageUrl: '/assets/images/banner1.jpg' },
-        { id: 2, imageUrl: '/assets/images/banner2.jpg' },
-        { id: 3, imageUrl: '/assets/images/banner3.jpg' }
+        { id: 1, imageUrl: '/tried.jpg' },
+        { id: 2, imageUrl: '/tried.jpg' },
+        { id: 3, imageUrl: '/tried.jpg' }
       ]
     });
   },
@@ -44,13 +43,13 @@ Page({
           id: 1,
           name: '铝合金运动轮毂 18寸',
           price: 1299,
-          imageUrl: '/assets/images/wheel1.jpg'
+          imageUrl: '/tried.jpg'
         },
         {
           id: 2,
           name: '锻造轮毂 19寸',
           price: 2499,
-          imageUrl: '/assets/images/wheel2.jpg'
+          imageUrl: '/tried.jpg'
         }
       ]
     });

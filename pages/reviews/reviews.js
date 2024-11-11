@@ -52,12 +52,12 @@ Page({
         {
           id: this.data.reviews.length + 1,
           nickname: '用户' + Math.floor(Math.random() * 1000),
-          avatar: '/assets/images/avatar.png',
+          avatar: '/tried.jpg',
           rating: 5,
           content: '轮毂质量非常好，安装后效果很棒，店家服务也很周到。',
           images: [
-            '/assets/images/review1.jpg',
-            '/assets/images/review2.jpg'
+            '/tried.jpg',
+            '/tried.jpg'
           ],
           time: '2024-01-15',
           reply: '感谢您的支持，欢迎下次再来！'
@@ -65,7 +65,7 @@ Page({
         {
           id: this.data.reviews.length + 2,
           nickname: '张先生',
-          avatar: '/assets/images/avatar.png',
+          avatar: '/tried.jpg',
           rating: 4,
           content: '整体不错，就是发货稍微有点慢。',
           images: [],

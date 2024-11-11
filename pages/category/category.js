@@ -64,14 +64,14 @@ Page({
           name: '高性能铝合金轮毂',
           description: '适用于多种车型，轻量化设计',
           price: 1299 + Math.floor(Math.random() * 1000),
-          imageUrl: '/assets/images/wheel1.jpg'
+          imageUrl: '/tried.jpg'
         },
         {
           id: this.data.products.length + 2,
           name: '定制锻造轮毂',
           description: '个性化定制，品质保证',
           price: 2499 + Math.floor(Math.random() * 1000),
-          imageUrl: '/assets/images/wheel2.jpg'
+          imageUrl: '/tried.jpg'
         }
       ];
 

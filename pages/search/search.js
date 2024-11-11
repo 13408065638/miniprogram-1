@@ -91,14 +91,14 @@ Page({
           name: '高性能铝合金轮毂 18寸',
           description: '采用优质铝合金材质，轻量化设计',
           price: 1299,
-          imageUrl: '/assets/images/wheel1.jpg'
+          imageUrl: '/tried.jpg'
         },
         {
           id: 2,
           name: '定制锻造轮毂 19寸',
           description: '个性化定制，品质保证',
           price: 2499,
-          imageUrl: '/assets/images/wheel2.jpg'
+          imageUrl: '/tried.jpg'
         }
       ].filter(item => 
         item.name.toLowerCase().includes(keyword.toLowerCase()) ||
