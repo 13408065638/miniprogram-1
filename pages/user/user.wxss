@@ -1,0 +1,115 @@
+.container {
+  min-height: 100vh;
+  background: #f8f8f8;
+}
+
+.user-info-section {
+  background: #1296db;
+  padding: 40rpx 30rpx;
+  color: #fff;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  background: #fff;
+}
+
+.info-right {
+  margin-left: 30rpx;
+}
+
+.nickname {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.user-id {
+  font-size: 24rpx;
+  opacity: 0.8;
+  margin-top: 10rpx;
+  display: block;
+}
+
+.login-btn {
+  width: 200rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 28rpx;
+  color: #1296db;
+  background: #fff;
+  border-radius: 35rpx;
+}
+
+.menu-section {
+  margin-top: 20rpx;
+  background: #fff;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #eee;
+  background: #fff;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-left {
+  display: flex;
+  align-items: center;
+}
+
+.menu-left image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+
+.menu-left text {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.menu-right {
+  display: flex;
+  align-items: center;
+}
+
+.menu-right .count {
+  font-size: 24rpx;
+  color: #999;
+  margin-right: 10rpx;
+}
+
+.menu-right image {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.contact-btn {
+  padding: 0;
+  font-weight: normal;
+  line-height: 1;
+}
+
+.contact-btn::after {
+  border: none;
+}
+
+.version-info {
+  text-align: center;
+  padding: 40rpx;
+  color: #999;
+  font-size: 24rpx;
+} 

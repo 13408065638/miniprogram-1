@@ -1,0 +1,96 @@
+<view class="container">
+  <!-- 评价统计 -->
+  <view class="review-stats">
+    <view class="rating-overview">
+      <text class="rating-score">{{product.rating || '5.0'}}</text>
+      <view class="rating-right">
+        <view class="stars">
+          <image wx:for="{{5}}" wx:key="*this"
+            src="/assets/icons/{{index < Math.floor(product.rating || 5) ? 'star-active.png' : 'star.png'}}">
+          </image>
+        </view>
+        <text class="rating-text">{{product.rating || '5.0'}}分</text>
+      </view>
+    </view>
+    
+    <!-- 评分分布 -->
+    <view class="rating-bars">
+      <view class="rating-bar-item" wx:for="{{ratingDistribution}}" wx:key="label">
+        <text class="bar-label">{{item.label}}</text>
+        <view class="bar-wrap">
+          <view class="bar-bg">
+            <view class="bar-fill" style="width: {{item.percentage}}%"></view>
+          </view>
+          <text class="bar-percent">{{item.percentage}}%</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 筛选标签 -->
+  <view class="filter-tags">
+    <view 
+      class="tag {{currentTag === item.name ? 'active' : ''}}" 
+      wx:for="{{reviewTags}}" 
+      wx:key="name"
+      bindtap="switchTag"
+      data-tag="{{item.name}}"
+    >
+      {{item.name}}({{item.count}})
+    </view>
+  </view>
+
+  <!-- 评价列表 -->
+  <scroll-view 
+    class="review-list" 
+    scroll-y 
+    bindscrolltolower="loadMore"
+    enable-back-to-top
+  >
+    <view class="review-item" wx:for="{{reviews}}" wx:key="id">
+      <view class="reviewer-info">
+        <image class="avatar" src="{{item.avatar}}"></image>
+        <view class="reviewer-detail">
+          <text class="nickname">{{item.nickname}}</text>
+          <view class="stars">
+            <image wx:for="{{5}}" wx:key="*this" wx:for-item="star"
+              src="/assets/icons/{{star < item.rating ? 'star-active.png' : 'star.png'}}">
+            </image>
+          </view>
+        </view>
+        <text class="review-time">{{item.time}}</text>
+      </view>
+      
+      <view class="review-content">{{item.content}}</view>
+      
+      <view class="review-images" wx:if="{{item.images.length > 0}}">
+        <image 
+          wx:for="{{item.images}}" 
+          wx:key="*this" 
+          wx:for-item="img"
+          src="{{img}}" 
+          mode="aspectFill" 
+          bindtap="previewImage" 
+          data-urls="{{item.images}}" 
+          data-current="{{img}}"
+        ></image>
+      </view>
+
+      <view class="review-reply" wx:if="{{item.reply}}">
+        <text class="reply-label">商家回复：</text>
+        <text class="reply-content">{{item.reply}}</text>
+      </view>
+    </view>
+
+    <!-- 加载状态 -->
+    <view class="loading-state" wx:if="{{loading}}">
+      <image src="/assets/icons/loading.gif"></image>
+      <text>加载中...</text>
+    </view>
+    
+    <!-- 无更多数据 -->
+    <view class="no-more" wx:if="{{noMore}}">
+      没有更多评价了
+    </view>
+  </scroll-view>
+</view> 

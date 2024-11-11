@@ -1,0 +1,129 @@
+<view class="container">
+  <!-- 商品图片轮播 -->
+  <swiper class="product-swiper" indicator-dots circular>
+    <swiper-item wx:for="{{product.images}}" wx:key="*this">
+      <image src="{{item}}" mode="aspectFill" bindtap="previewImage" data-url="{{item}}"></image>
+    </swiper-item>
+  </swiper>
+
+  <!-- 商品基本信息 -->
+  <view class="product-info">
+    <view class="price-section">
+      <text class="price">¥{{product.price}}</text>
+      <view class="action-buttons">
+        <button class="share-btn" open-type="share">
+          <image src="/assets/icons/share.png"></image>
+          <text>分享</text>
+        </button>
+        <view class="favorite-btn" bindtap="toggleFavorite">
+          <image src="{{isFavorite ? '/assets/icons/favorite-active.png' : '/assets/icons/favorite.png'}}"></image>
+          <text>{{isFavorite ? '已收藏' : '收藏'}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="title">{{product.name}}</view>
+    <view class="desc">{{product.description}}</view>
+  </view>
+
+  <!-- 商品参数 -->
+  <view class="specs-section">
+    <view class="section-title">商品参数</view>
+    <view class="specs-grid">
+      <view class="spec-item" wx:for="{{product.specifications}}" wx:key="name">
+        <text class="spec-label">{{item.name}}</text>
+        <text class="spec-value">{{item.value}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 商品详情 -->
+  <view class="detail-section">
+    <view class="section-title">商品详情</view>
+    <rich-text nodes="{{product.detail}}"></rich-text>
+  </view>
+
+  <!-- 在商品详情后添加评价区域 -->
+  <view class="reviews-section">
+    <view class="section-title">
+      <text>商品评价</text>
+      <text class="review-count">({{product.reviewCount || 0}})</text>
+      <navigator url="/pages/reviews/reviews?id={{product.id}}" class="view-all">
+        查看全部 >
+      </navigator>
+    </view>
+    
+    <!-- 评价统计 -->
+    <view class="review-stats">
+      <view class="rating">
+        <text class="rating-score">{{product.rating || '5.0'}}</text>
+        <view class="stars">
+          <image wx:for="{{5}}" wx:key="*this"
+            src="/assets/icons/{{index < Math.floor(product.rating || 5) ? 'star-active.png' : 'star.png'}}">
+          </image>
+        </view>
+      </view>
+      <view class="rating-tags">
+        <text class="tag {{item.count > 0 ? 'active' : ''}}" 
+          wx:for="{{reviewTags}}" 
+          wx:key="name">
+          {{item.name}}({{item.count}})
+        </text>
+      </view>
+    </view>
+
+    <!-- 评价列表预览 -->
+    <view class="review-list" wx:if="{{reviews.length > 0}}">
+      <view class="review-item" wx:for="{{reviews}}" wx:key="id">
+        <view class="reviewer-info">
+          <image class="avatar" src="{{item.avatar}}"></image>
+          <text class="nickname">{{item.nickname}}</text>
+          <view class="stars">
+            <image wx:for="{{5}}" wx:key="*this" wx:for-item="star"
+              src="/assets/icons/{{star < item.rating ? 'star-active.png' : 'star.png'}}">
+            </image>
+          </view>
+        </view>
+        <view class="review-content">{{item.content}}</view>
+        <view class="review-images" wx:if="{{item.images.length > 0}}">
+          <image wx:for="{{item.images}}" wx:key="*this" wx:for-item="img"
+            src="{{img}}" mode="aspectFill" 
+            bindtap="previewReviewImage" 
+            data-urls="{{item.images}}" 
+            data-current="{{img}}">
+          </image>
+        </view>
+        <view class="review-time">{{item.time}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-bar">
+    <view class="contact-section">
+      <button class="contact-btn" open-type="contact">
+        <image src="/assets/icons/service.png"></image>
+        <text>客服</text>
+      </button>
+    </view>
+    <view class="action-section">
+      <button class="inquiry-btn" bindtap="showInquiryPopup">询价</button>
+    </view>
+  </view>
+
+  <!-- 询价弹窗 -->
+  <view class="inquiry-popup" wx:if="{{showInquiry}}">
+    <view class="popup-mask" bindtap="hideInquiryPopup"></view>
+    <view class="popup-content">
+      <view class="popup-header">
+        <text>询价</text>
+        <image src="/assets/icons/close.png" bindtap="hideInquiryPopup"></image>
+      </view>
+      <view class="inquiry-form">
+        <input placeholder="请输入的姓名" model:value="{{inquiryForm.name}}"/>
+        <input placeholder="请输入联系电话" type="number" model:value="{{inquiryForm.phone}}"/>
+        <textarea placeholder="请输入询价留言" model:value="{{inquiryForm.message}}"></textarea>
+        <button class="submit-btn" bindtap="submitInquiry">提交询价</button>
+      </view>
+    </view>
+  </view>
+</view> 

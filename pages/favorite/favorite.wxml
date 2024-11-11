@@ -1,0 +1,49 @@
+<view class="container">
+  <!-- 顶部操作栏 -->
+  <view class="header" wx:if="{{favorites.length > 0}}">
+    <view class="total">共{{favorites.length}}件商品</view>
+    <view class="edit-btn" bindtap="toggleEditMode">
+      {{isEditMode ? '完成' : '编辑'}}
+    </view>
+  </view>
+
+  <!-- 收藏列表 -->
+  <view class="favorite-list" wx:if="{{favorites.length > 0}}">
+    <view class="favorite-item" wx:for="{{favorites}}" wx:key="id">
+      <!-- 选择框 -->
+      <view class="checkbox" wx:if="{{isEditMode}}" catchtap="toggleSelect" data-id="{{item.id}}">
+        <icon type="success" size="20" color="{{selectedItems[item.id] ? '#1296db' : '#ddd'}}"/>
+      </view>
+      
+      <!-- 商品信息 -->
+      <view class="product-card" bindtap="navigateToDetail" data-id="{{item.id}}">
+        <image class="product-image" src="{{item.imageUrl}}" mode="aspectFill"></image>
+        <view class="product-info">
+          <text class="product-name">{{item.name}}</text>
+          <text class="product-desc">{{item.description}}</text>
+          <text class="product-price">¥{{item.price}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:else>
+    <image src="/assets/icons/empty-favorite.png"></image>
+    <text>暂无收藏商品</text>
+    <navigator url="/pages/index/index" class="go-shopping">
+      去逛逛
+    </navigator>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-bar" wx:if="{{isEditMode && favorites.length > 0}}">
+    <view class="select-all" bindtap="toggleSelectAll">
+      <icon type="success" size="20" color="{{isAllSelected ? '#1296db' : '#ddd'}}"/>
+      <text>全选</text>
+    </view>
+    <view class="delete-btn" bindtap="deleteSelected">
+      删除所选({{selectedCount}})
+    </view>
+  </view>
+</view> 

@@ -1,0 +1,37 @@
+<view class="container">
+  <!-- 顶部操作栏 -->
+  <view class="header" wx:if="{{history.length > 0}}">
+    <view class="total">共{{history.length}}条浏览记录</view>
+    <view class="clear-btn" bindtap="clearHistory">清空记录</view>
+  </view>
+
+  <!-- 历史记录列表 -->
+  <view class="history-list" wx:if="{{history.length > 0}}">
+    <view class="date-group" wx:for="{{groupedHistory}}" wx:key="date">
+      <view class="date-header">{{item.date}}</view>
+      <view class="product-item" 
+        wx:for="{{item.products}}" 
+        wx:key="id" 
+        wx:for-item="product"
+        bindtap="navigateToDetail"
+        data-id="{{product.id}}"
+      >
+        <image class="product-image" src="{{product.imageUrl}}" mode="aspectFill"></image>
+        <view class="product-info">
+          <text class="product-name">{{product.name}}</text>
+          <text class="product-desc">{{product.description}}</text>
+          <text class="product-price">¥{{product.price}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:else>
+    <image src="/assets/icons/empty-history.png"></image>
+    <text>暂无浏览记录</text>
+    <navigator url="/pages/index/index" class="go-shopping">
+      去逛逛
+    </navigator>
+  </view>
+</view> 

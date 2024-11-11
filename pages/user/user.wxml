@@ -1,0 +1,64 @@
+<view class="container">
+  <!-- 用户信息区域 -->
+  <view class="user-info-section">
+    <view class="user-info" wx:if="{{userInfo}}">
+      <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+      <view class="info-right">
+        <text class="nickname">{{userInfo.nickName}}</text>
+        <text class="user-id">ID: {{userId}}</text>
+      </view>
+    </view>
+    <view class="user-info" wx:else>
+      <button class="login-btn" bindtap="handleLogin">登录/注册</button>
+    </view>
+  </view>
+
+  <!-- 功能菜单 -->
+  <view class="menu-section">
+    <navigator url="/pages/favorite/favorite" class="menu-item">
+      <view class="menu-left">
+        <image src="/assets/icons/favorite.png"></image>
+        <text>我的收藏</text>
+      </view>
+      <view class="menu-right">
+        <text class="count" wx:if="{{favoriteCount > 0}}">{{favoriteCount}}</text>
+        <image src="/assets/icons/arrow-right.png"></image>
+      </view>
+    </navigator>
+
+    <navigator url="/pages/history/history" class="menu-item">
+      <view class="menu-left">
+        <image src="/assets/icons/history.png"></image>
+        <text>浏览历史</text>
+      </view>
+      <view class="menu-right">
+        <image src="/assets/icons/arrow-right.png"></image>
+      </view>
+    </navigator>
+
+    <button class="menu-item contact-btn" open-type="contact">
+      <view class="menu-left">
+        <image src="/assets/icons/service.png"></image>
+        <text>联系客服</text>
+      </view>
+      <view class="menu-right">
+        <image src="/assets/icons/arrow-right.png"></image>
+      </view>
+    </button>
+
+    <view class="menu-item" bindtap="clearCache">
+      <view class="menu-left">
+        <image src="/assets/icons/clear.png"></image>
+        <text>清除缓存</text>
+      </view>
+      <view class="menu-right">
+        <image src="/assets/icons/arrow-right.png"></image>
+      </view>
+    </view>
+  </view>
+
+  <!-- 版本信息 -->
+  <view class="version-info">
+    <text>当前版本 1.0.0</text>
+  </view>
+</view> 
