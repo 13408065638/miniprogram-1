@@ -1,19 +1,18 @@
 <!--index.wxml-->
-<navigation-bar title="Weixin" back="{{false}}" color="black" background="#FFF"></navigation-bar>
-<scroll-view class="scrollarea" scroll-y type="list">
+<scroll-view class="scrollarea" scroll-y type="list" bindscrolltolower="onReachBottom">
   <view class="container">
     <!-- 顶部搜索框 -->
     <view class="search-box">
       <navigator url="/pages/search/search" class="search-input">
         <icon type="search" size="14"></icon>
-        <text>搜索轮毂</text>
+        <text>请输入名称搜索~</text>
       </navigator>
     </view>
 
     <!-- 轮播图 -->
     <swiper class="banner" indicator-dots autoplay circular>
       <swiper-item wx:for="{{banners}}" wx:key="id">
-        <image src="{{item.imageUrl}}" mode="aspectFill"></image>
+        <image src="{{item.imageUrl}}" mode="aspectFit"></image>
       </swiper-item>
     </swiper>
 
@@ -36,6 +35,16 @@
             <text class="product-price">¥{{item.price}}</text>
           </view>
         </view>
+      </view>
+      
+      <!-- 加载状态 -->
+      <view class="loading-state" wx:if="{{loading}}">
+        <text>加载中...</text>
+      </view>
+      
+      <!-- 无更多数据 -->
+      <view class="no-more" wx:if="{{noMore}}">
+        <text>没有更多商品了</text>
       </view>
     </view>
   </view>
